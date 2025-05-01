@@ -6,6 +6,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     name: Build and Deploy to Production
     steps:
       - name: Checkout code
