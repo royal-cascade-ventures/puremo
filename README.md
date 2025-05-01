@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# Puremo React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Puremo is a single-page React app developed using React, Docker, and CI/CD. It uses ESLint (Airbnb style guide) for code quality and automated deployments.
 
-## Available Scripts
+- Beta: https://beta.puremolife.com
+- Prod: https://puremolife.com
 
-In the project directory, you can run:
+## Development Cycle
 
-### `npm start`
+### Workflow
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Create branch:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+git checkout -b your-feature
+```
 
-### `npm test`
+2. Push:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git add .
+git commit -m "Add feature"
+git push origin your-feature
+```
 
-### `npm run build`
+3. Open PR to `main`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Builds to Development, test at https://beta.puremolife.com
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Merge PR:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Builds to Production, deploys to https://puremolife.com
 
-### `npm run eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Docker, Docker Compose
+- Git
+- Hostinger shared hosting
+- GitHub account
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Local Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Clone:
 
-## Learn More
+```
+git clone https://github.com/royal-cascade-ventures/puremo.git
+cd puremo
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+docker compose up --build
+```
 
-### Code Splitting
+3. Visit: `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. Stop:
 
-### Analyzing the Bundle Size
+```
+docker compose down
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Code Quality
 
-### Making a Progressive Web App
+1. Lint:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+docker run --rm -v $(pwd):/app -w /app node:18-alpine npm run lint
+```
 
-### Advanced Configuration
+2. Update package-lock.json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+docker run --rm -v $(pwd):/app -w /app node:18-alpine npm install
+```
 
-### Deployment
+### File Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+puremo/
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.jsx
+│   ├── index.css
+├── public/
+│   ├── index.html
+├── .github/workflows/
+│   ├── build-and-deploy.yml
+│   ├── pr-validation.yml
+├── .eslintrc.json
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── package-lock.json
+```
 
-### `npm run build` fails to minify
+License
+MIT License. See [LICENSE](https://github.com/royal-cascade-ventures/puremo/blob/main/LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contact
+Open an issue or email info@puremolife.com
