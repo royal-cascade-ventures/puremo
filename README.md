@@ -1,4 +1,4 @@
-# Puremo React App: Development Cycle
+# Puremo React App
 
 Puremo is a single-page React app developed using React, Docker, and CI/CD. It uses ESLint (Airbnb style guide) for code quality and automated deployments.
 
