@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="app-container">
       <div className="card">
-        <h1>Welcome to React with Docker!</h1>
-        <p>This is a simple React app running inside a Docker container.</p>
+        <h1>Welcome to Puremo Beta!</h1>
+        <p>This is a Puremo Beta.</p>
         <button type="button">
           Click Me
         </button>

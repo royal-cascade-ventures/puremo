@@ -5,8 +5,8 @@ function App() {
   return (
     <div className="app-container">
       <div className="card">
-        <h1>Welcome to puremo!</h1>
-        <p>This is a simple React app.</p>
+      <h1>Welcome to Puremo Beta!</h1>
+      <p>This is a Puremo Beta.</p>
         <button type="button" onClick={() => console.log('Button clicked!')}>
           Click Me
         </button>
