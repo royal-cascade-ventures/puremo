@@ -20,11 +20,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-<<<<<<< HEAD
         run: npm ci
-=======
-        run: npm install
->>>>>>> ab2c6215475665959808ffdd931999055db38c68
 
       - name: Build
         run: npm run build
