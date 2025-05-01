@@ -7,7 +7,7 @@ function App() {
       <div className="card">
         <h1>Welcome to React with Docker!</h1>
         <p>This is a simple React app running inside a Docker container.</p>
-        <button type="button" onClick={() => console.log('Button clicked!')}>
+        <button type="button">
           Click Me
         </button>
       </div>
