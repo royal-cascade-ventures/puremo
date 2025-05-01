@@ -6,6 +6,8 @@ on:
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     name: Validate and Build for Development
     steps:
       - name: Checkout code
