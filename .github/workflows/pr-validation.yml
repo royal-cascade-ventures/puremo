@@ -26,12 +26,17 @@ jobs:
           npm install -g stylelint stylelint-config-standard
         continue-on-error: false
 
+      - name: Create Stylelint configuration
+        run: |
+          echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
+        continue-on-error: false
+
       - name: Validate HTML
         run: html5validator --root src
         continue-on-error: false
 
       - name: Validate CSS
-        run: stylelint "src/*.css" --config-basedir
+        run: stylelint "src/**/*.css"
         if: always()
 
       - name: Copy static assets to dist
