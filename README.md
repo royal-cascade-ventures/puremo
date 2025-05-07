@@ -1,6 +1,6 @@
-# Puremo React App
+# Puremo Static Website
 
-Puremo is a single-page React app developed using React, Docker, and CI/CD. It uses ESLint (Airbnb style guide) for code quality and automated deployments.
+Puremo is a simple static website built with HTML, CSS, and JavaScript, deployed using GitHub Actions for CI/CD. It uses HTML5Validator and Stylelint for code quality and automated deployments.
 
 - Beta: https://beta.puremolife.com
 - Prod: https://puremolife.com
@@ -25,20 +25,21 @@ git push origin your-feature
 
 3. Open PR to `main`:
 
-- Builds to Development, test at https://beta.puremolife.com
+- Validates HTML and CSS, builds to Development, test at https://beta.puremolife.com
 
-3. Merge PR:
+4. Merge PR:
 
-- Builds to Production, deploys to https://puremolife.com
+- Deploys to Production, available at https://puremolife.com
 
 ## Setup
 
 ### Prerequisites
 
-- Docker, Docker Compose
 - Git
 - Hostinger shared hosting
 - GitHub account
+- A modern web browser for local testing
+- (Optional) Python 3.11+ and Node.js for local validation
 
 ### Local Development
 
@@ -49,32 +50,27 @@ git clone https://github.com/royal-cascade-ventures/puremo.git
 cd puremo
 ```
 
-2. Run:
+2. Open `src/index.html` in a web browser to view the site locally.
+
+### Code Quality (Optional)
+
+1. Install validators:
 
 ```
-docker compose up --build
+pip install html5validator
+npm install -g stylelint stylelint-config-standard
 ```
 
-3. Visit: `http://localhost:3000`
-
-4. Stop:
+2. Validate HTML:
 
 ```
-docker compose down
+html5validator --root src
 ```
 
-### Code Quality
-
-1. Lint:
+3. Validate and fix CSS:
 
 ```
-docker run --rm -v $(pwd):/app -w /app node:18-alpine npm run lint
-```
-
-2. Update package-lock.json
-
-```
-docker run --rm -v $(pwd):/app -w /app node:18-alpine npm install
+stylelint "src/**/*.css" --fix
 ```
 
 ### File Structure
@@ -82,24 +78,19 @@ docker run --rm -v $(pwd):/app -w /app node:18-alpine npm install
 ```
 puremo/
 ├── src/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.jsx
-│   ├── index.css
-├── public/
 │   ├── index.html
+│   ├── styles.css
+│   ├── script.js
 ├── .github/workflows/
 │   ├── build-and-deploy.yml
 │   ├── pr-validation.yml
-├── .eslintrc.json
-├── Dockerfile
-├── docker-compose.yml
-├── package.json
-├── package-lock.json
+├── .stylelintrc.json
+├── README.md
+├── LICENSE
 ```
 
-License
+## License
 MIT License. See [LICENSE](https://github.com/royal-cascade-ventures/puremo/blob/main/LICENSE).
 
-Contact
+## Contact
 Open an issue or email info@puremolife.com
