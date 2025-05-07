@@ -35,8 +35,8 @@ jobs:
         run: html5validator --root src
         continue-on-error: false
 
-      - name: Validate CSS
-        run: stylelint "src/**/*.css"
+      - name: Validate and fix CSS
+        run: stylelint "src/**/*.css" --fix
         if: always()
 
       - name: Copy static assets to dist
