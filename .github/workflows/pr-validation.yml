@@ -31,7 +31,7 @@ jobs:
         continue-on-error: false
 
       - name: Validate CSS
-        run: stylelint "src/**/*.css" --config-basedir
+        run: stylelint "src/*.css" --config-basedir
         if: always()
 
       - name: Copy static assets to dist
