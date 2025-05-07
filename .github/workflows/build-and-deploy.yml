@@ -12,26 +12,44 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "npm"
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      - name: Build
-        run: npm run build
-        env:
-          REACT_APP_ENV: production
+      - name: Install HTML and CSS validators
+        run: |
+          pip install html5validator
+          npm install -g stylelint stylelint-config-standard
+        continue-on-error: false
+
+      - name: Create Stylelint configuration
+        run: |
+          echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
+        continue-on-error: false
+
+      - name: Validate HTML
+        run: html5validator --root src
+        continue-on-error: false
+
+      - name: Validate and fix CSS
+        run: stylelint "src/**/*.css" --fix
+        if: always()
+
+      - name: Copy static assets to dist
+        run: |
+          mkdir -p dist
+          cp -r src/* dist/
+        continue-on-error: false
 
       - name: Push build to production branch
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
           BRANCH: production
-          FOLDER: build
+          FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Production Build: ({sha}) {msg}"
