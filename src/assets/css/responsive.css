@@ -1121,6 +1121,7 @@
 }
 .banner-content .banner-caption {
 	margin: 0 0 15px;
+	font-size: 14px;
 }
 .banner-shape.one {
 	width: 70px;
@@ -1132,10 +1133,11 @@
 	opacity: 1;
 }
 .banner-content .title {
-	font-size: 45px;
+	font-size: 38px;
 	margin: 0 0 30px;
 }
 .banner-content {
+
 	margin: 0 0 55px;
 }
 .banner-images .bg-shape {
