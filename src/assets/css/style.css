@@ -1311,7 +1311,21 @@ body.search-visible {
 	border-radius: 99px;
 	z-index: -1;
 }
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(-0px);
+  }
+  50% {
+    transform: translateY(28px); /* move up */
+  }
+  100% {
+    transform: translateY(-0px); /* back to original */
+  }
+}
+
 .banner-images .main-img {
+	animation: floatUpDown 3s ease-in-out infinite;
 	position: absolute;
 	left: 0;
 	right: 0;
