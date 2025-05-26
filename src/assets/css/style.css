@@ -1317,7 +1317,7 @@ body.search-visible {
     transform: translateY(-0px);
   }
   50% {
-    transform: translateY(28px); /* move up */
+    transform: translateY(16px); /* move up */
   }
   100% {
     transform: translateY(-0px); /* back to original */
