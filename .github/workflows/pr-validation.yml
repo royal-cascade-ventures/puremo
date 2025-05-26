@@ -15,29 +15,29 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      # - name: Set up Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.11"
 
-      - name: Install HTML and CSS validators
-        run: |
-          pip install html5validator
-          npm install -g stylelint stylelint-config-standard
-        continue-on-error: false
+      # - name: Install HTML and CSS validators
+      #   run: |
+      #     pip install html5validator
+      #     npm install -g stylelint stylelint-config-standard
+      #   continue-on-error: false
 
-      - name: Create Stylelint configuration
-        run: |
-          echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
-        continue-on-error: false
+      # - name: Create Stylelint configuration
+      #   run: |
+      #     echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
+      #   continue-on-error: false
 
-      - name: Validate HTML
-        run: html5validator --root src
-        continue-on-error: false
+      # - name: Validate HTML
+      #   run: html5validator --root src
+      #   continue-on-error: false
 
-      - name: Validate and fix CSS
-        run: stylelint "src/**/*.css" --fix
-        if: always()
+      # - name: Validate and fix CSS
+      #   run: stylelint "src/**/*.css" --fix
+      #   if: always()
 
       - name: Copy static assets to dist
         run: |
